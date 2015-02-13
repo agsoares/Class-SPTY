@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Artist.h"
+#import "Album.h"
 
 @interface Music : NSObject
+@property NSString *title;
+@property Artist *artist;
+@property Album *album;
+@property float rating;
+@property long playCount;
+
+
+
+
 
 @end
