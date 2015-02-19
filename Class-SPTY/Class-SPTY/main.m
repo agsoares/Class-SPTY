@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
+#import "User.h"
+
+User *user;
+
+void login() {
+    
+
+}
 
 void createPlaylist(){
     char name[100];
