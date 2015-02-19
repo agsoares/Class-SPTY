@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface Playlist : NSObject
+
+@property NSString *name;
+@property NSMutableArray *musics;
+@property NSMutableArray *followers;
+@property User *owner;
+@property NSString *date;
+@property BOOL hidden;
+
+
+- (id) initWithName:(NSString *)name;
 
 @end

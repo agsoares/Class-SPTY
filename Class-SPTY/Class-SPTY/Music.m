@@ -10,8 +10,6 @@
 
 @implementation Music
 
-@property NSString *title;
-@property BOOL *avaliableOffline;
-@property NSInteger *playsCount;
+
 
 @end

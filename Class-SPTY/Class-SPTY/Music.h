@@ -11,14 +11,14 @@
 #import "Album.h"
 
 @interface Music : NSObject
+
 @property NSString *title;
 @property Artist *artist;
 @property Album *album;
 @property float rating;
 @property long playCount;
-
-
-
+@property BOOL *avaliableOffline;
+@property NSInteger *playsCount;
 
 
 @end
