@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Angra</string>
+		<key>Albuns</key>
+		<array>
+			<dict>
+				<key>Name</key>
+				<string>Album A</string>
+				<key>Musics</key>
+				<array>
+					<dict>
+						<key>Name</key>
+						<string>Music I</string>
+						<key>Data</key>
+						<string>Teste Musica I</string>
+					</dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+				</array>
+			</dict>
+            <dict>
+                <key>Name</key>
+                <string>Album B</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+            <dict>
+                <key>Name</key>
+                <string>Album C</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+		</array>
+	</dict>
+    <dict>
+        <key>Name</key>
+        <string>Blind Guardian</string>
+        <key>Albuns</key>
+        <array>
+            <dict>
+                <key>Name</key>
+                <string>Album A</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+            <dict>
+                <key>Name</key>
+                <string>Album B</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+            <dict>
+                <key>Name</key>
+                <string>Album C</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+        </array>
+    </dict>
+    <dict>
+        <key>Name</key>
+        <string>AC/DC</string>
+        <key>Albuns</key>
+        <array>
+            <dict>
+                <key>Name</key>
+                <string>Album A</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+            <dict>
+                <key>Name</key>
+                <string>Album B</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+            <dict>
+                <key>Name</key>
+                <string>Album C</string>
+                <key>Musics</key>
+                <array>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music I</string>
+                        <key>Data</key>
+                        <string>Teste Musica I</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music II</string>
+                        <key>Data</key>
+                        <string>Teste Musica II</string>
+                    </dict>
+                    <dict>
+                        <key>Name</key>
+                        <string>Music III</string>
+                        <key>Data</key>
+                        <string>Teste Musica III</string>
+                    </dict>
+                </array>
+            </dict>
+        </array>
+    </dict>
+</array>
+</plist>

@@ -38,6 +38,7 @@
 		35FC98271A8E77EA004CFC4C /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		35FC98291A8E7832004CFC4C /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		35FC982A1A8E7832004CFC4C /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		B9D1898B1A96553300B0509D /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		B9EC28A41A8E6FB80054EB03 /* Class-SPTY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Class-SPTY"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EC28A71A8E6FB80054EB03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9EC28AE1A963C6B0054EB03 /* Users.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Users.plist; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 				35FC98291A8E7832004CFC4C /* Playlist.h */,
 				35FC982A1A8E7832004CFC4C /* Playlist.m */,
 				B9EC28AE1A963C6B0054EB03 /* Users.plist */,
+				B9D1898B1A96553300B0509D /* Data.plist */,
 			);
 			path = "Class-SPTY";
 			sourceTree = "<group>";
