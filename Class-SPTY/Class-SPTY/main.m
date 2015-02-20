@@ -21,6 +21,9 @@ void createPlaylist(){
     
     Playlist *playlist =[[Playlist alloc] initWithName:[[NSString alloc] initWithUTF8String:name]];
     
+    [[user playlists] addObject:playlist];
+    [user saveUser:user];
+    
 }
 
 int main(int argc, const char * argv[]) {
@@ -77,18 +80,19 @@ int main(int argc, const char * argv[]) {
         int option;
         NSLog(@"** Welcome %@ **", [user name]);
         NSLog(@"1 - My playlists");
-        NSLog(@"2 - Artists");
-        NSLog(@"3 - Users");
+        NSLog(@"2 - Create playlist");
+        NSLog(@"3 - Artists");
+        NSLog(@"4 - Users");
         scanf("%i", &option);
         
         switch (option) {
             case 1:
                 break;
             case 2:
+                createPlaylist();
                 break;
             case 3:
                 break;
-                
             default:
                 break;
         }

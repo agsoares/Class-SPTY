@@ -17,7 +17,8 @@
 @property NSMutableArray *followers;
 @property NSMutableArray *following;
 
--(User *)login:(NSString *)username password:(NSString *)password;
--(User *)registerUser;
+- (User *)login:(NSString *)username password:(NSString *)password;
+- (User *)registerUser;
+- (void)saveUser:(User *)object;
 
 @end

@@ -19,6 +19,6 @@
 @property BOOL hidden;
 
 
-- (id) initWithName:(NSString *)name;
+- (Playlist *) initWithName:(NSString *)name;
 
 @end

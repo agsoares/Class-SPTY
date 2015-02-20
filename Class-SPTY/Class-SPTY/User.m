@@ -10,6 +10,24 @@
 
 @implementation User
 
+- (void)saveUser:(User *)object{
+    
+    NSArray *array = [[NSArray alloc] initWithContentsOfFile: @"./Users.plist"];
+    
+    for (int i = 0 ; i<[array count]; i++) {
+        NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[array objectAtIndex:i]];
+        if([[object username] isEqualToString:[users valueForKey:@"username"]]){
+           
+           NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
+           NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:[object password], @"password", [object username],@"username", [object name], @"name", [object followers], @"followers", [object following], @"following", [object playlists], @"playlists", nil];
+        
+            [mutableArray replaceObjectAtIndex:i withObject:newUser];
+            [mutableArray writeToFile:@"./Users.plist" atomically:NO];
+            break;
+        }
+    }
+}
+
 - (User *)initWithObject:(NSDictionary *)object
 {
     self = [super init];
@@ -19,6 +37,8 @@
         self.password = [object valueForKey:@"password"];
         self.followers = [object valueForKey:@"followers"];
         self.following = [object valueForKey:@"following"];
+        
+        self.playlists = [[NSMutableArray alloc] initWithArray: [object valueForKey:@"playlists"]];
     }
     return self;
 }
