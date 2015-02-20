@@ -7,7 +7,12 @@
 //
 
 #import "User.h"
+#import "Artist.h"
 
 @interface Artist : User
++ (NSArray *) loadArtist;
+- (Artist *) initWithObject:(NSDictionary *) object;
+- (void) printArtist;
+
 
 @end
