@@ -7,18 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Artist.h"
-#import "Album.h"
 
 @interface Music : NSObject
 
 @property NSString *title;
-@property Artist *artist;
-@property Album *album;
-@property float rating;
-@property long playCount;
-@property BOOL *avaliableOffline;
-@property NSInteger *playsCount;
+@property NSString *data;
+
++ (NSArray *) loadMusics:(NSDictionary *) object;
+- (Music *) initWithObject:(NSDictionary *) object;
 
 
 @end

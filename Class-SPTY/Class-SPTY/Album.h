@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Artist.h"
+#import "Music.h"
 
 @interface Album : NSObject
 
-@property NSMutableArray *musics;
-@property Artist *artist;
+@property NSArray *musics;
 @property NSString *name;
-@property NSInteger *year;
-@property BOOL *single;
+
++ (NSArray *) loadAlbums: (NSDictionary *) obj;
+- (Album *) initWithObject:(NSDictionary *) object;
+
 
 
 

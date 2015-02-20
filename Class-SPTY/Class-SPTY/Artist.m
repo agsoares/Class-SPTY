@@ -8,6 +8,7 @@
 
 #import "Artist.h"
 
+
 @implementation Artist
 
 + (NSArray *)loadArtist {
@@ -28,6 +29,7 @@
     self = [super init];
     if (self) {
       self.name = [object valueForKey:@"name"];
+      self.albums = [Album loadAlbums:object];
     }
     return self;
 }

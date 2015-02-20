@@ -8,8 +8,11 @@
 
 #import "User.h"
 #import "Artist.h"
+#import "Album.h"
 
 @interface Artist : User
+@property NSArray *albums;
+
 + (NSArray *) loadArtist;
 - (Artist *) initWithObject:(NSDictionary *) object;
 - (void) printArtist;
