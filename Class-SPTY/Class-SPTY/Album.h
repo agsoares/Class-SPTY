@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Artist.h"
 
 @interface Album : NSObject
+
+@property NSMutableArray *musics;
+@property Artist *artist;
+@property NSString *name;
+@property NSInteger *year;
+@property BOOL *single;
+
+
 
 @end

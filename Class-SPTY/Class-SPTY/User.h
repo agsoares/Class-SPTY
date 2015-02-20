@@ -14,12 +14,14 @@
 @property NSString *screenName;
 @property NSString *email;
 @property NSString *password;
-@property NSImage *photo;
 @property NSMutableArray *playlists;
 @property NSMutableArray *followers;
 @property NSMutableArray *following;
 @property NSMutableArray *recentlyPlayed;
-@property BOOL *premium;
 @property NSMutableArray *devices;
+@property BOOL *premium;
+@property NSImage *photo;
+
+-(BOOL)login:(NSString *)username password:(NSString *)password;
 
 @end

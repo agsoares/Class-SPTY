@@ -10,55 +10,49 @@
 #import "Playlist.h"
 #import "User.h"
 
-User *user;
-
 void createPlaylist(){
-    char name[100];
+    
+    char name[256];
     NSLog(@"Playlist name:");
     scanf("%s", name);
-    Playlist *playlist = [[Playlist alloc] initWithName:[[NSString alloc] initWithUTF8String:name]];
-    [[playlist musics] addObject:@"Musica 1"];
-    NSLog(@"%@", [playlist name]);
+    
+    Playlist *playlist =[[Playlist alloc] initWithName:[[NSString alloc] initWithUTF8String:name]];
+    
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
+        User *user = [[User alloc] init];
         
-        char username[25];
-        char password[25];
+        char _username[25];
+        char _password[25];
+        NSString *username;
+        NSString *password;
         
-        NSLog(@"Login");
-        NSLog(@"Username: ");
-        scanf("%s", username);
-        NSLog(@"Password: ");
-        scanf("%s", password);
+        do{
+            NSLog(@"Username: ");
+            scanf("%s", _username);
+            NSLog(@"Password: ");
+            scanf("%s", _password);
+            
+            username = [[NSString alloc] initWithUTF8String:_username];
+            password = [[NSString alloc] initWithUTF8String:_password];
+            
+        }while([user login:username password:password]);
         
-        NSString *_username = [[NSString alloc] initWithUTF8String:username];
-        NSString *_password = [[NSString alloc] initWithUTF8String:password];
-        
-        NSArray *array = [[NSArray alloc] initWithContentsOfFile: @"Users.plist"];
-        for (int i = 0 ; i<[array count]; i++) {
-            NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[array objectAtIndex:i]];
-            if([_username isEqualToString:[users valueForKey:@"screenname"]] && [_password isEqualToString:[users valueForKey:@"password"]]){
-                NSLog(@"Login Feito");
-                i = (int)[array count];
-            }
-            else{
-                NSLog(@"Fail");
-            }
-        }
-        
+        system("clear");
         
         int option;
-        system("clear");
+
         NSLog(@"1 - List Albuns");
         NSLog(@"2 - List Musics");
         NSLog(@"3 - Create Playlist");
-        //Alterado por mim!
         scanf("%i", &option);
         
         switch (option) {
+            case 2:
+                break;
             case 3:
                 createPlaylist();
                 break;
