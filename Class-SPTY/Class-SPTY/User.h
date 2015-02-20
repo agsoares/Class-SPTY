@@ -11,18 +11,13 @@
 @interface User : NSObject
 
 @property NSString *name;
-@property NSString *screenName;
-@property NSString *email;
+@property NSString *username;
 @property NSString *password;
 @property NSMutableArray *playlists;
 @property NSMutableArray *followers;
 @property NSMutableArray *following;
-@property NSMutableArray *recentlyPlayed;
-@property NSMutableArray *devices;
-@property BOOL *premium;
-@property NSImage *photo;
 
--(BOOL)login:(NSString *)username password:(NSString *)password;
--(void)registerUser;
+-(User *)login:(NSString *)username password:(NSString *)password;
+-(User *)registerUser;
 
 @end

@@ -10,11 +10,14 @@
 #import "Playlist.h"
 #import "User.h"
 
+User *user;
+
 void createPlaylist(){
     
     char name[256];
     NSLog(@"Playlist name:");
-    scanf("%s", name);
+    getchar();
+    fgets (name, 256, stdin);
     
     Playlist *playlist =[[Playlist alloc] initWithName:[[NSString alloc] initWithUTF8String:name]];
     
@@ -23,7 +26,7 @@ void createPlaylist(){
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        User *user = [[User alloc] init];
+        
         char _username[25];
         char _password[25];
         NSString *username;
@@ -34,13 +37,13 @@ int main(int argc, const char * argv[]) {
         
         while (YES) {
             NSLog(@"1 - Login");
-            NSLog(@"2 - Registe");
+            NSLog(@"2 - Register");
             scanf("%d", &opt);
+            system("clear");
             
             switch (opt) {
                 case 1:
                     do{
-                        system("clear");
                         NSLog(@"**** Login ****");
                         NSLog(@"Username: ");
                         scanf("%s", _username);
@@ -50,12 +53,13 @@ int main(int argc, const char * argv[]) {
                         
                         username = [[NSString alloc] initWithUTF8String:_username];
                         password = [[NSString alloc] initWithUTF8String:_password];
-                        
-                    }while([user login:username password:password] != YES);
+                        user = [[User alloc] init];
+                        user = [user login:username password:password];
+                    }while(!user);
                     break;
                     
                 case 2:
-                    [user registerUser];
+                    user = [user registerUser];
                     break;
                 default:
                     system("clear");
@@ -71,17 +75,18 @@ int main(int argc, const char * argv[]) {
         system("clear");
         
         int option;
-
-        NSLog(@"1 - List Albuns");
-        NSLog(@"3 - Create Playlist");
+        NSLog(@"** Welcome %@ **", [user name]);
+        NSLog(@"1 - My playlists");
+        NSLog(@"2 - Artists");
+        NSLog(@"3 - Users");
         scanf("%i", &option);
         
         switch (option) {
+            case 1:
+                break;
             case 2:
-                
                 break;
             case 3:
-                createPlaylist();
                 break;
                 
             default:
