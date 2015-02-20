@@ -24,34 +24,61 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         User *user = [[User alloc] init];
-        
         char _username[25];
         char _password[25];
         NSString *username;
         NSString *password;
+        int opt;
+        system("clear");
+        NSLog(@"**** Hello ****");
         
-        do{
-            NSLog(@"Username: ");
-            scanf("%s", _username);
-            NSLog(@"Password: ");
-            scanf("%s", _password);
+        while (YES) {
+            NSLog(@"1 - Login");
+            NSLog(@"2 - Registe");
+            scanf("%d", &opt);
             
-            username = [[NSString alloc] initWithUTF8String:_username];
-            password = [[NSString alloc] initWithUTF8String:_password];
-            
-        }while([user login:username password:password]);
+            switch (opt) {
+                case 1:
+                    do{
+                        system("clear");
+                        NSLog(@"**** Login ****");
+                        NSLog(@"Username: ");
+                        scanf("%s", _username);
+                        NSLog(@"Password: ");
+                        scanf("%s", _password);
+                        
+                        
+                        username = [[NSString alloc] initWithUTF8String:_username];
+                        password = [[NSString alloc] initWithUTF8String:_password];
+                        
+                    }while([user login:username password:password] != YES);
+                    break;
+                    
+                case 2:
+                    [user registerUser];
+                    break;
+                default:
+                    system("clear");
+                    NSLog(@"*** Invalid option ***");
+                    continue;
+                    break;
+            }
+            break;
+
+        }
+        
         
         system("clear");
         
         int option;
 
         NSLog(@"1 - List Albuns");
-        NSLog(@"2 - List Musics");
         NSLog(@"3 - Create Playlist");
         scanf("%i", &option);
         
         switch (option) {
             case 2:
+                
                 break;
             case 3:
                 createPlaylist();

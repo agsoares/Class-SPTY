@@ -23,5 +23,6 @@
 @property NSImage *photo;
 
 -(BOOL)login:(NSString *)username password:(NSString *)password;
+-(void)registerUser;
 
 @end

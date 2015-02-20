@@ -12,11 +12,11 @@
 
 -(BOOL)login:(NSString *)username password:(NSString *)password{
     
-    NSArray *array = [[NSArray alloc] initWithContentsOfFile: @"Users.plist"];
+    NSArray *array = [[NSArray alloc] initWithContentsOfFile: @"./Users.plist"];
 
     for (int i = 0 ; i<[array count]; i++) {
         NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[array objectAtIndex:i]];
-        if([username isEqualToString:[users valueForKey:@"screenname"]] &&
+        if([username isEqualToString:[users valueForKey:@"username"]] &&
            [password isEqualToString:[users valueForKey:@"password"]]){
             
             NSLog(@"Login Sucess");
@@ -29,4 +29,28 @@
     fflush(stdin);
     return NO;
 }
+
+-(void)registerUser{
+    
+    char user[25];
+    char pass[25];
+    
+    system("clear");
+    
+    NSLog(@"***** Cadastro de Usuário ***** ");
+    NSLog(@"Username: ");
+    scanf("%s", user);
+    NSLog(@"Password: ");
+    scanf("%s", pass);
+    
+    NSString *username = [[NSString alloc] initWithUTF8String:user];
+    NSString *password = [[NSString alloc] initWithUTF8String:pass];
+    
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
+    NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:password, @"password", username,@"username", nil];
+    [mutableArray insertObject:newUser atIndex:[mutableArray count]];
+    [mutableArray writeToFile:@"./Users.plist" atomically:YES];
+    
+}
 @end
+
