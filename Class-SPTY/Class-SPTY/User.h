@@ -19,6 +19,5 @@
 
 - (User *)login:(NSString *)username password:(NSString *)password;
 - (User *)registerUser;
-- (void)saveUser:(User *)object;
 
 @end

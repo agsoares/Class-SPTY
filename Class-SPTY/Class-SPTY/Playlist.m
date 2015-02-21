@@ -17,4 +17,47 @@
     return self;
 }
 
+
+- (BOOL)savePlaylist:(User *)user{
+    int i;
+    //constroi o array de users
+    NSMutableArray *usersArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
+    
+    NSMutableArray *playlistsArray = [[NSMutableArray alloc] init];
+    
+    for (i = 0 ; i<[[user playlists] count]; i++) {
+
+        //cria o dicionario referente a classe Playlist
+        
+        NSDictionary *playlistDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                            [[[user playlists] objectAtIndex:i] name], @"name",
+                                            [[[user playlists] objectAtIndex:i] musics], @"musics", nil];
+        
+        [playlistsArray addObject:playlistDictionary];
+    }
+    
+    for (i = 0 ; i<[usersArray count]; i++) {
+        //controi arrey referente a um usuario
+        NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[usersArray objectAtIndex:i]];
+        
+        if([[user username] isEqualToString:[users valueForKey:@"username"]]){
+            //Cria dicionario referente ao usuario reebido por parametro com a playlist
+            
+            NSDictionary *modifiedUser = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                     [user password], @"password",
+                                     [user username],@"username",
+                                     [user name], @"name",
+                                     [user followers], @"followers",
+                                     [user following], @"following",
+                                     playlistsArray, @"playlists", nil];
+            NSLog(@"%@", playlistsArray);
+            
+            [usersArray replaceObjectAtIndex:i withObject:modifiedUser];
+            [usersArray writeToFile:@"./Users.plist" atomically:YES];
+            break;
+        }
+    }
+    return YES;
+}
+
 @end

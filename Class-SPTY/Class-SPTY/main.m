@@ -10,31 +10,32 @@
 #import "Playlist.h"
 #import "User.h"
 
-User *user;
-
-void createPlaylist(){
+void createPlaylistForUser(User *user){
     
     char name[256];
     NSLog(@"Playlist name:");
     getchar();
     fgets (name, 256, stdin);
     
-    Playlist *playlist =[[Playlist alloc] initWithName:[[NSString alloc] initWithUTF8String:name]];
-    
+    Playlist *playlist =[[Playlist alloc] init];
+    [playlist setName:[NSString stringWithUTF8String:name]];
     [[user playlists] addObject:playlist];
-    [user saveUser:user];
+//    NSLog(@"%@", [user playlists]);
     
+    [playlist savePlaylist:user];
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
         
+        User *user;
         char _username[25];
         char _password[25];
         NSString *username;
         NSString *password;
         int opt;
+        
+        
         system("clear");
         NSLog(@"**** Hello ****");
         
@@ -43,7 +44,7 @@ int main(int argc, const char * argv[]) {
             NSLog(@"2 - Register");
             scanf("%d", &opt);
             system("clear");
-            
+            user = [[User alloc] init];
             switch (opt) {
                 case 1:
                     do{
@@ -56,7 +57,6 @@ int main(int argc, const char * argv[]) {
                         
                         username = [[NSString alloc] initWithUTF8String:_username];
                         password = [[NSString alloc] initWithUTF8String:_password];
-                        user = [[User alloc] init];
                         user = [user login:username password:password];
                     }while(!user);
                     break;
@@ -89,7 +89,7 @@ int main(int argc, const char * argv[]) {
             case 1:
                 break;
             case 2:
-                createPlaylist();
+                createPlaylistForUser(user);
                 break;
             case 3:
                 break;

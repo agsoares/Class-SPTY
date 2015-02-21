@@ -10,26 +10,10 @@
 
 @implementation User
 
-- (void)saveUser:(User *)object{
-    
-    NSArray *array = [[NSArray alloc] initWithContentsOfFile: @"./Users.plist"];
-    
-    for (int i = 0 ; i<[array count]; i++) {
-        NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[array objectAtIndex:i]];
-        if([[object username] isEqualToString:[users valueForKey:@"username"]]){
-           
-           NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
-           NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:[object password], @"password", [object username],@"username", [object name], @"name", [object followers], @"followers", [object following], @"following", [object playlists], @"playlists", nil];
-        
-            [mutableArray replaceObjectAtIndex:i withObject:newUser];
-            [mutableArray writeToFile:@"./Users.plist" atomically:NO];
-            break;
-        }
-    }
-}
-
 - (User *)initWithObject:(NSDictionary *)object
 {
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[object valueForKey:@"playlists"]];
+    
     self = [super init];
     if (self) {
         self.name = [object valueForKey:@"name"];
@@ -37,12 +21,10 @@
         self.password = [object valueForKey:@"password"];
         self.followers = [object valueForKey:@"followers"];
         self.following = [object valueForKey:@"following"];
-        
-        self.playlists = [[NSMutableArray alloc] initWithArray: [object valueForKey:@"playlists"]];
+        self.playlists = array;
     }
     return self;
 }
-
 
 -(User *)login:(NSString *)username password:(NSString *)password{
     
@@ -53,9 +35,8 @@
         if([username isEqualToString:[users valueForKey:@"username"]] &&
            [password isEqualToString:[users valueForKey:@"password"]]){
             
-            
+            system("clear");
             NSLog(@"Login Sucess");
-            i = (int)[array count];
             return [self initWithObject:users];
         }
     }
@@ -86,16 +67,18 @@
     NSString *password = [[NSString alloc] initWithUTF8String:pass];
     NSString *name = [[NSString alloc] initWithUTF8String:nm];
     
-    User *nUser = [[User alloc] init];
-    [nUser setName:name];
-    [nUser setUsername:username];
-    [nUser setPassword:password];
-    
     NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
-    NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:password, @"password", username,@"username", name, @"name", [[NSArray alloc] init], @"followers", [[NSArray alloc] init], @"following", [[NSArray alloc] init], @"playlists", nil];
+    NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             name, @"name",
+                             username,@"username",
+                             password, @"password",
+                             [[NSArray alloc] init], @"followers",
+                             [[NSArray alloc] init], @"following",
+                             [[NSArray alloc] init], @"playlists", nil];
     [mutableArray insertObject:newUser atIndex:[mutableArray count]];
     [mutableArray writeToFile:@"./Users.plist" atomically:YES];
-    return nUser;
+    
+    return [[User alloc ]initWithObject:newUser];
     
 }
 @end

@@ -20,5 +20,5 @@
 
 
 - (Playlist *) initWithName:(NSString *)name;
-
+- (BOOL)savePlaylist:(User *)object;
 @end
