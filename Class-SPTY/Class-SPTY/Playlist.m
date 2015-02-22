@@ -17,6 +17,19 @@
     return self;
 }
 
+-(void) createPlaylistForUser:(User *)user{
+    
+    char name[256];
+    NSLog(@"Playlist name:");
+    getchar();
+    fgets (name, 256, stdin);
+    
+    Playlist *playlist =[[Playlist alloc] init];
+    [playlist setName:[NSString stringWithUTF8String:name]];
+    [[user playlists] addObject:playlist];
+    
+    [playlist savePlaylist:user];
+}
 
 - (BOOL)savePlaylist:(User *)user{
     int i;

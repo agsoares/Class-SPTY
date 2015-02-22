@@ -12,6 +12,7 @@
 		35FC98251A8E77DD004CFC4C /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC98241A8E77DD004CFC4C /* Album.m */; };
 		35FC98281A8E77EA004CFC4C /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC98271A8E77EA004CFC4C /* Artist.m */; };
 		35FC982B1A8E7832004CFC4C /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FC982A1A8E7832004CFC4C /* Playlist.m */; };
+		553C906D1A994818004E7650 /* Menus.m in Sources */ = {isa = PBXBuildFile; fileRef = 553C906C1A994818004E7650 /* Menus.m */; };
 		B9EC28A81A8E6FB80054EB03 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EC28A71A8E6FB80054EB03 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 		35FC98271A8E77EA004CFC4C /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		35FC98291A8E7832004CFC4C /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		35FC982A1A8E7832004CFC4C /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		553C906B1A994818004E7650 /* Menus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menus.h; sourceTree = "<group>"; };
+		553C906C1A994818004E7650 /* Menus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menus.m; sourceTree = "<group>"; };
 		B9D1898B1A96553300B0509D /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		B9EC28A41A8E6FB80054EB03 /* Class-SPTY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Class-SPTY"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9EC28A71A8E6FB80054EB03 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				B9EC28A71A8E6FB80054EB03 /* main.m */,
+				553C906B1A994818004E7650 /* Menus.h */,
+				553C906C1A994818004E7650 /* Menus.m */,
 				35FC981D1A8E7793004CFC4C /* User.h */,
 				35FC981E1A8E7793004CFC4C /* User.m */,
 				35FC98201A8E77B3004CFC4C /* Music.h */,
@@ -150,6 +155,7 @@
 				35FC98221A8E77B3004CFC4C /* Music.m in Sources */,
 				35FC982B1A8E7832004CFC4C /* Playlist.m in Sources */,
 				35FC981F1A8E7793004CFC4C /* User.m in Sources */,
+				553C906D1A994818004E7650 /* Menus.m in Sources */,
 				B9EC28A81A8E6FB80054EB03 /* main.m in Sources */,
 				35FC98251A8E77DD004CFC4C /* Album.m in Sources */,
 				35FC98281A8E77EA004CFC4C /* Artist.m in Sources */,

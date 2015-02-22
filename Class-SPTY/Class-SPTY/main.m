@@ -9,21 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Playlist.h"
 #import "User.h"
-
-void createPlaylistForUser(User *user){
-    
-    char name[256];
-    NSLog(@"Playlist name:");
-    getchar();
-    fgets (name, 256, stdin);
-    
-    Playlist *playlist =[[Playlist alloc] init];
-    [playlist setName:[NSString stringWithUTF8String:name]];
-    [[user playlists] addObject:playlist];
-//    NSLog(@"%@", [user playlists]);
-    
-    [playlist savePlaylist:user];
-}
+#import "Menus.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -44,10 +30,11 @@ int main(int argc, const char * argv[]) {
             NSLog(@"2 - Register");
             scanf("%d", &opt);
             system("clear");
-            user = [[User alloc] init];
+            
             switch (opt) {
                 case 1:
                     do{
+                        user = [[User alloc] init];
                         NSLog(@"**** Login ****");
                         NSLog(@"Username: ");
                         scanf("%s", _username);
@@ -62,6 +49,7 @@ int main(int argc, const char * argv[]) {
                     break;
                     
                 case 2:
+                    user = [[User alloc] init];
                     user = [user registerUser];
                     break;
                 default:
@@ -73,29 +61,7 @@ int main(int argc, const char * argv[]) {
             break;
 
         }
-        
-        
-        system("clear");
-        
-        int option;
-        NSLog(@"** Welcome %@ **", [user name]);
-        NSLog(@"1 - My playlists");
-        NSLog(@"2 - Create playlist");
-        NSLog(@"3 - Artists");
-        NSLog(@"4 - Users");
-        scanf("%i", &option);
-        
-        switch (option) {
-            case 1:
-                break;
-            case 2:
-                createPlaylistForUser(user);
-                break;
-            case 3:
-                break;
-            default:
-                break;
-        }
+        [[Menus alloc] mainMenu:user];
     }
     return 0;
 }
