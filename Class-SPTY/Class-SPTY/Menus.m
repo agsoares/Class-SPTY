@@ -23,7 +23,10 @@
     
     for (int i =0; i<[array count]; i++)
         NSLog(@"%d - %@", i+1, [[[NSDictionary alloc] initWithDictionary:[array objectAtIndex:i]] valueForKey:@"name"]);
-    NSLog(@"%@", [user following]);
+    
+    NSLog(@"******* Following *******");
+    for (int i =0; i<[[user following] count]; i++)
+        NSLog(@"%@", [[user following] objectAtIndex:i]);
     
     while (YES) {
         getchar();
@@ -35,7 +38,7 @@
         else{
             for (int i = 0; i<[[user following] count]; i++) {
                 if([[user following] objectAtIndex:i] == [[array objectAtIndex:opt-1] valueForKey:@"name"]){
-                    NSLog(@"You already follow %@", [[user following] objectAtIndex:i]);
+                    NSLog(@"!! You already follow %@ !!", [[user following] objectAtIndex:i]);
                     exist = YES;
                 }
             }
@@ -44,9 +47,11 @@
                 [mutableArray addObject:[[array objectAtIndex:opt-1] valueForKey:@"name"]];
                 user.following = mutableArray;
                 [user saveUser:user];
-                NSLog(@"You are following %@", [[[NSDictionary alloc] initWithDictionary:[array objectAtIndex:opt-1]] valueForKey:@"name"]);
             }
-            NSLog(@"All you follow:%@", user.following);
+            NSLog(@"******* Following *******");
+            for (int i =0; i<[[user following] count]; i++)
+                NSLog(@"%@", [[user following] objectAtIndex:i]);
+
             exist = NO;
         }
     }
@@ -83,14 +88,15 @@
 
 -(void) playlistMenu:(User *)user{
     int opt;
-    system("clear");
-    NSLog(@"********* Playlists *********");
-    NSLog(@"0 - Main menu");
-    
-    //Lista playlists
-    for (int  i = 0; i<[[user playlists] count]; i++)
-        NSLog(@"%d - %@", i+1, [[[user playlists] objectAtIndex:i] valueForKey:@"name"]);
     while (YES) {
+        system("clear");
+        NSLog(@"********* Playlists *********");
+        NSLog(@"Select (-) the playlist to delete");
+        NSLog(@"0 - Main menu");
+        
+        //Lista playlists
+        for (int  i = 0; i<[[user playlists] count]; i++)
+            NSLog(@"%d - %@", i+1, [[[user playlists] objectAtIndex:i] valueForKey:@"name"]);
         
         //Le qual playlist mostrar as musicas
         getchar();
@@ -100,6 +106,10 @@
             system("clear");
             [self mainMenu:user];
             break;
+        }
+        else if (opt<0){
+            [[user playlists] removeObjectAtIndex:(opt+1)*-1];
+            [user saveUser:user];
         }
         else if (opt >[[user playlists] count]){
             NSLog(@"Invalid playlist");
