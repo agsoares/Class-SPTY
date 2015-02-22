@@ -197,42 +197,97 @@
     
 
 }
+-(void)loginMenu{
+    User *user;
+    char _username[25];
+    char _password[25];
+    NSString *username;
+    NSString *password;
+    int opt;
+    
+    
+    system("clear");
+    NSLog(@"**** Hello ****");
+    
+    while (YES) {
+        NSLog(@"1 - Login");
+        NSLog(@"2 - Register");
+        scanf("%d", &opt);
+        system("clear");
+        
+        switch (opt) {
+            case 1:
+                do{
+                    user = [[User alloc] init];
+                    NSLog(@"**** Login ****");
+                    NSLog(@"Username: ");
+                    scanf("%s", _username);
+                    NSLog(@"Password: ");
+                    scanf("%s", _password);
+                    
+                    
+                    username = [[NSString alloc] initWithUTF8String:_username];
+                    password = [[NSString alloc] initWithUTF8String:_password];
+                    user = [user login:username password:password];
+                }while(!user);
+                break;
+                
+            case 2:
+                user = [[User alloc] init];
+                user = [user registerUser];
+                break;
+            default:
+                system("clear");
+                NSLog(@"*** Invalid option ***");
+                continue;
+                break;
+        }
+        break;
+        
+    }
+    [self mainMenu:user];
+}
 
 -(void) mainMenu:(User *)user{
-    
-    int option;
     system("clear");
-    NSLog(@"** Welcome %@ **", [user name]);
-    NSLog(@"1 - My playlists");
-    NSLog(@"2 - Create playlist");
-    NSLog(@"3 - Artists");
-    NSLog(@"4 - Users");
-    NSLog(@"5 - Following");
-    NSLog(@"6 - Logout");
-    scanf("%i", &option);
-    
-    switch (option) {
-        case 1:
-            [self playlistMenu:user];
-            break;
-        case 2:
-            [[Playlist alloc] createPlaylistForUser:user];
-            system("clear");
-            [self mainMenu:user];
-            break;
-        case 3:
-            [self artistsMenu:user];
-            break;
-        case 4:
-            [self userMenu:user];
-            break;
-        case 5:
-            [self followingMenu:user];
-            break;
-        case 6:
-            break;
-        default:
-            break;
+    while (YES) {
+        int option;
+        NSLog(@"** Welcome %@ **", [user name]);
+        NSLog(@"1 - My playlists");
+        NSLog(@"2 - Create playlist");
+        NSLog(@"3 - Artists");
+        NSLog(@"4 - Users");
+        NSLog(@"5 - Following");
+        NSLog(@"6 - Logout");
+        scanf("%i", &option);
+        
+        switch (option) {
+            case 1:
+                [self playlistMenu:user];
+                break;
+            case 2:
+                [[Playlist alloc] createPlaylistForUser:user];
+                system("clear");
+                [self mainMenu:user];
+                break;
+            case 3:
+                [self artistsMenu:user];
+                break;
+            case 4:
+                [self userMenu:user];
+                break;
+            case 5:
+                [self followingMenu:user];
+                break;
+            case 6:
+                [self loginMenu];
+                break;
+            default:
+                system("clear");
+                NSLog(@"Invalid Option");
+                continue;
+                break;
+        }
     }
 }
 

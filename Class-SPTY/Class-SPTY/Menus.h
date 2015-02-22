@@ -21,5 +21,6 @@
 -(void) albumsMenu:(User *)user :(Artist *)artist;
 -(void) musicMenu:(User *)user :(Music *)music;
 -(void) mainMenu:(User *)user;
+-(void) loginMenu;
 
 @end
