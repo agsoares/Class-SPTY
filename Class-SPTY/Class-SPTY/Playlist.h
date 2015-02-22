@@ -13,10 +13,6 @@
 
 @property NSString *name;
 @property NSMutableArray *musics;
-@property NSMutableArray *followers;
-@property User *owner;
-@property NSString *date;
-@property BOOL hidden;
 
 
 - (Playlist *) initWithName:(NSString *)name;
