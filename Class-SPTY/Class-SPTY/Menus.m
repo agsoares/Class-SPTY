@@ -127,7 +127,7 @@
     NSArray *array = [[NSArray alloc] initWithArray:[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"]];
     //Lista musicas
     for (int i =0; i<[array count]; i++)
-        NSLog(@"%d - %@", i+1, [array objectAtIndex:i]);
+        NSLog(@"%d - %@", i+1, [[array objectAtIndex:i] title]);
     if ([[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"] count] == 0)
         NSLog(@"No musics on this playlist");
     
@@ -142,7 +142,7 @@
             NSLog(@"Invalid music");
         }
         else{
-            NSLog(@"Playing - %@", [array objectAtIndex:opt-1]);
+            NSLog(@"Playing - %@", [[array objectAtIndex:opt-1] title]);
         }
     }
 }
@@ -178,8 +178,8 @@
     if (opt1 == 0) {
         [self artistsMenu:user];
     } else {
-        Album *album = artist.albums[opt1];
-        Music *music = album.musics[opt2];
+        Album *album = artist.albums[opt1 -1];
+        Music *music = album.musics[opt2 -1];
         [self musicMenu:user :music];
     }
     
@@ -193,10 +193,43 @@
     NSLog(@"2 - Add to Playlists");
     int opt;
     scanf("%d", &opt);
-    
-    
+    while (YES) {
+        switch (opt) {
+            case 0:
+                [self artistsMenu:user];
+                break;
+            case 1:
+                NSLog(@"Playing - %@", music.title);
+                break;
+            default:
+                [self selectPlaylistMenu:user :music];
+                [self artistsMenu:user];
+                break;
+        }
+    }
 
 }
+
+- (void)selectPlaylistMenu:(User *)user :(Music *)music {
+    system("clear");
+    NSLog(@"**** Playlists ****");
+    NSLog(@"0 - Return to Artists");
+    for (int i = 0; i < [user.playlists count]; i++) {
+        NSLog(@"%d - %@", i+1, [(Playlist *)user.playlists[i] name]);
+    }
+    int opt;
+    scanf("%d", &opt);
+    if (opt == 0) {
+        [self artistsMenu:user];
+    } else if (opt <= [user.playlists count]) {
+        [[user.playlists[opt-1] musics] addObject:music];
+        [user saveUser:user];
+    } else {
+        [self selectPlaylistMenu:user :music];
+    }
+}
+
+
 -(void)loginMenu{
     User *user;
     char _username[25];
