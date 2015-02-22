@@ -15,7 +15,5 @@
 
 + (NSArray *) loadArtist;
 - (Artist *) initWithObject:(NSDictionary *) object;
-- (void) printArtist;
-
 
 @end

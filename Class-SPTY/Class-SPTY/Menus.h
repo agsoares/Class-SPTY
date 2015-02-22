@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 #import "Playlist.h"
+#import "Artist.h"
+#import "Album.h"
+#import "Music.h"
 
 @interface Menus : NSObject
 
 -(void) userMenu:(User *)user;
 -(void) playlistMenu:(User *)user;
+-(void) artistsMenu:(User *)user;
+-(void) albumsMenu:(User *)user :(Artist *)artist;
+-(void) musicMenu:(User *)user :(Music *)music;
 -(void) mainMenu:(User *)user;
 
 @end

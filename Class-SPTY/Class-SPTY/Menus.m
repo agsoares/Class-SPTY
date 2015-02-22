@@ -79,6 +79,8 @@
     }
 }
 
+
+
 -(void) playlistMenu:(User *)user{
     int opt;
     system("clear");
@@ -135,6 +137,57 @@
     }
 }
 
+- (void)artistsMenu:(User *)user{
+    system("clear");
+    NSArray *artists = [Artist loadArtist];
+    NSLog(@"0 - Main menu");
+    for (int i = 0; i < [artists count]; i++) {
+        NSLog(@"%d - %@",i+1, [artists[i] name]);
+    }
+    int option;
+    scanf("%d",&option);
+    if (option == 0) {
+        [self mainMenu:user];
+    } else if (option <= [artists count]) {
+        [self albumsMenu:user :artists[option -1]];
+    }
+}
+
+-(void)albumsMenu:(User *)user :(Artist *)artist{
+    system("clear");
+    int opt1, opt2;
+    NSLog(@"0 - Return to Artists");
+    for (int i = 0; i < [artist.albums count]; i++) {
+        Album *album = artist.albums[i];
+        NSLog(@"%@", [album name]);
+        for (int j = 0; j < [album.musics count]; j++) {
+            NSLog(@"%d.%d - %@",i+1, j+1, [album.musics[j] title]);
+        }
+    }
+    scanf("%d.%d", &opt1, &opt2);
+    if (opt1 == 0) {
+        [self artistsMenu:user];
+    } else {
+        Album *album = artist.albums[opt1];
+        Music *music = album.musics[opt2];
+        [self musicMenu:user :music];
+    }
+    
+}
+
+-(void)musicMenu:(User *)user :(Music *)music {
+    system("clear");
+    NSLog(@"**** %@ ****", music.title);
+    NSLog(@"0 - Return to Artists");
+    NSLog(@"1 - Play");
+    NSLog(@"2 - Add to Playlists");
+    int opt;
+    scanf("%d", &opt);
+    
+    
+
+}
+
 -(void) mainMenu:(User *)user{
     
     int option;
@@ -158,6 +211,7 @@
             [self mainMenu:user];
             break;
         case 3:
+            [self artistsMenu:user];
             break;
         case 4:
             [self userMenu:user];

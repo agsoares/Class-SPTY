@@ -28,15 +28,10 @@
 {
     self = [super init];
     if (self) {
-      self.name = [object valueForKey:@"name"];
+      self.name = [object valueForKey:@"Name"];
       self.albums = [Album loadAlbums:object];
     }
     return self;
 }
-- (void)printArtist {
-
-
-}
-
 
 @end
