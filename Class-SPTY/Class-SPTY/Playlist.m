@@ -24,8 +24,11 @@
     getchar();
     fgets (name, 256, stdin);
     
+    NSMutableArray *musicsArray = [[NSMutableArray alloc] init];
+    
     Playlist *playlist =[[Playlist alloc] init];
     [playlist setName:[NSString stringWithUTF8String:name]];
+    [playlist setMusics:musicsArray];
     [[user playlists] addObject:playlist];
     
     [user saveUser:user];

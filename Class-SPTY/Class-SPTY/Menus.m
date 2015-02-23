@@ -37,7 +37,7 @@
         }
         else{
             for (int i = 0; i<[[user following] count]; i++) {
-                if([[user following] objectAtIndex:i] == [[array objectAtIndex:opt-1] valueForKey:@"name"]){
+                if([[[user following] objectAtIndex:i] isEqualToString:[[array objectAtIndex:opt-1] valueForKey:@"name"]]){
                     NSLog(@"!! You already follow %@ !!", [[user following] objectAtIndex:i]);
                     exist = YES;
                 }
@@ -84,10 +84,8 @@
     }
 }
 
-
-
 -(void) playlistMenu:(User *)user{
-    int opt;
+    int opt, opt1;
     while (YES) {
         system("clear");
         NSLog(@"********* Playlists *********");
@@ -117,32 +115,42 @@
         else
             break;
     }
-    
-    //Mostra musicas da playlist
-    system("clear");
-    NSLog(@"****** %@ ******", [[[user playlists] objectAtIndex:opt-1] valueForKey:@"name"]);
-    NSLog(@"0 - Playlists menu");
-    
-    //cria array com musicas da playlis selecionada
-    NSArray *array = [[NSArray alloc] initWithArray:[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"]];
-    //Lista musicas
-    for (int i =0; i<[array count]; i++)
-        NSLog(@"%d - %@", i+1, [[array objectAtIndex:i] title]);
-    if ([[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"] count] == 0)
-        NSLog(@"No musics on this playlist");
-    
     while (YES) {
-        getchar();
-        scanf("%d", &opt);
-        if (opt == 0){
+        system("clear");
+        //Mostra musicas da playlist
+        NSLog(@"****** %@ ******", [[[user playlists] objectAtIndex:opt-1] valueForKey:@"name"]);
+        NSLog(@"Select (-) the playlist to delete");
+        NSLog(@"0 - Playlists menu");
+        
+        //cria array com musicas da playlis selecionada
+        NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"]];
+        
+        //Lista musicas
+        for (int i =0; i<[array count]; i++)
+            NSLog(@"%d - %@", i+1, [array objectAtIndex:i]);
+        
+        if ([[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"] count] == 0)
+            NSLog(@"No musics on this playlist");
+    
+//        getchar();
+        scanf("%d", &opt1);
+        if (opt1 == 0){
             [self playlistMenu:user];
             break;
         }
-        else if (opt >[array count]){
+        else if (opt1<0){
+            [[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"] removeObjectAtIndex:(opt1+1)*-1];
+            [user saveUser:user];
+        }
+        else if (opt1 >[array count]){
             NSLog(@"Invalid music");
         }
         else{
-            NSLog(@"Playing - %@", [[array objectAtIndex:opt-1] title]);
+            NSLog(@"Playing - %@", [array objectAtIndex:opt1-1]);
+            NSLog(@"Press RETURN to stop");
+            getchar();
+            if (getchar() == 10)
+                continue;
         }
     }
 }
@@ -150,6 +158,7 @@
 - (void)artistsMenu:(User *)user{
     system("clear");
     NSArray *artists = [Artist loadArtist];
+    NSLog(@"**** Artists ****");
     NSLog(@"0 - Main menu");
     for (int i = 0; i < [artists count]; i++) {
         NSLog(@"%d - %@",i+1, [artists[i] name]);
@@ -166,6 +175,7 @@
 -(void)albumsMenu:(User *)user :(Artist *)artist{
     system("clear");
     int opt1, opt2;
+    NSLog(@"**** %@ ****", artist.name);
     NSLog(@"0 - Return to Artists");
     for (int i = 0; i < [artist.albums count]; i++) {
         Album *album = artist.albums[i];
@@ -192,8 +202,9 @@
     NSLog(@"1 - Play");
     NSLog(@"2 - Add to Playlists");
     int opt;
-    scanf("%d", &opt);
+    
     while (YES) {
+        scanf("%d", &opt);
         switch (opt) {
             case 0:
                 [self artistsMenu:user];
@@ -222,7 +233,7 @@
     if (opt == 0) {
         [self artistsMenu:user];
     } else if (opt <= [user.playlists count]) {
-        [[user.playlists[opt-1] musics] addObject:music];
+        [[user.playlists[opt-1] musics] addObject:[music title]];
         [user saveUser:user];
     } else {
         [self selectPlaylistMenu:user :music];

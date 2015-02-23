@@ -43,24 +43,28 @@
 
 - (void)saveUser:(User *)user{
     int i;
-    //constroi o array de users
-    NSMutableArray *usersArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
     
+    //constroi o array de users a partir do arquivo
+    NSMutableArray *usersArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
     NSMutableArray *playlistsArray = [[NSMutableArray alloc] init];
     
     for (i = 0 ; i<[[user playlists] count]; i++) {
         
         //cria o dicionario referente a classe Playlist
+        NSMutableDictionary *playlistDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                                   [[[user playlists] objectAtIndex:i] name], @"name", nil];
         
-        NSDictionary *playlistDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                            [[[user playlists] objectAtIndex:i] name], @"name",
-                                            [[[user playlists] objectAtIndex:i] musics], @"musics", nil];
+        NSMutableArray *musicsArray = [[NSMutableArray alloc] init];
         
+        for(int j = 0 ; j<[[[[user playlists] objectAtIndex:i] musics] count]; j++)
+            [musicsArray addObject:[[[[user playlists] objectAtIndex:i] musics] objectAtIndex:j]];
+        
+        [playlistDictionary setObject:musicsArray forKey:@"musics"];
         [playlistsArray addObject:playlistDictionary];
     }
     
     for (i = 0 ; i<[usersArray count]; i++) {
-        //controi arrey referente a um usuario
+        //controi array referente a um usuario
         NSDictionary *users = [[NSDictionary alloc] initWithDictionary:[usersArray objectAtIndex:i]];
         
         if([[user username] isEqualToString:[users valueForKey:@"username"]]){
