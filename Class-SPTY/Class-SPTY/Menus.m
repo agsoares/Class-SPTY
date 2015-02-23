@@ -132,7 +132,6 @@
         if ([[[[user playlists] objectAtIndex:opt-1] valueForKey:@"musics"] count] == 0)
             NSLog(@"No musics on this playlist");
     
-//        getchar();
         scanf("%d", &opt1);
         if (opt1 == 0){
             [self playlistMenu:user];

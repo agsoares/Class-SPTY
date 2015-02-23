@@ -132,7 +132,7 @@
     NSString *username = [[NSString alloc] initWithUTF8String:user];
     NSString *password = [[NSString alloc] initWithUTF8String:pass];
     NSString *name = [[NSString alloc] initWithUTF8String:nm];
-    
+    name = [name stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithContentsOfFile: @"./Users.plist"];
     NSDictionary *newUser = [[NSDictionary alloc] initWithObjectsAndKeys:
                              name, @"name",

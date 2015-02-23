@@ -27,7 +27,7 @@
     NSMutableArray *musicsArray = [[NSMutableArray alloc] init];
     
     Playlist *playlist =[[Playlist alloc] init];
-    [playlist setName:[NSString stringWithUTF8String:name]];
+    [playlist setName:[[NSString stringWithUTF8String:name] stringByReplacingOccurrencesOfString:@"\n" withString:@""]];
     [playlist setMusics:musicsArray];
     [[user playlists] addObject:playlist];
     
